@@ -41,7 +41,7 @@ SELECT
   with_birth_qty,
   with_birth_percent
 FROM
-  `shopper-teste-01.shopper.customer_numbers`
+  ``.shopper.customer_numbers`
 ~~~
 **Resultado:**
 |total_customers_qty|null_birth_qty|null_birth_percent|with_birth_qty|with_birth_percent|
@@ -57,7 +57,7 @@ SELECT
     c.customer_id,
     DATE_DIFF(current_date, c.birth, year) AS age
   FROM
-    shopper-teste-01.shopper.customers c
+    `shopper-teste-01.shopper.customers` c
   WHERE
     c.birth IS NOT NULL
 ~~~
@@ -73,7 +73,7 @@ Depois, a instrução final consulta a view para obter o número de clientes com
 SELECT
   COUNT(*) AS customers_quantity
 FROM
-  shopper-teste-01.shopper.customer_age ca
+  `shopper-teste-01.shopper.customer_age` ca
 WHERE
   ca.age > 50
 ~~~
@@ -158,7 +158,7 @@ SELECT
       SELECT
         total_customers_qty
       FROM
-        shopper-teste-01.shopper.customer_numbers)) * 100, 2) AS conversion_rate_total_customers
+        `shopper-teste-01.shopper.customer_numbers`)) * 100, 2) AS conversion_rate_total_customers
 FROM
   sales_by_month sbm
 LEFT JOIN
@@ -197,9 +197,9 @@ WITH
     ROW_NUMBER() OVER (PARTITION BY s.customer_id ORDER BY s.sales_datetime) AS sales_number,
     ca.age
   FROM
-    shopper-teste-01.shopper.sales s
+    `shopper-teste-01.shopper.sales` s
   JOIN
-    shopper-teste-01.shopper.customer_age ca
+    `shopper-teste-01.shopper.customer_age` ca
   ON
     s.customer_id = ca.customer_id
   ORDER BY

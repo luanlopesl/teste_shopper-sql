@@ -5,9 +5,9 @@ WITH
     ROW_NUMBER() OVER (PARTITION BY s.customer_id ORDER BY s.sales_datetime) AS sales_number,
     ca.age
   FROM
-    shopper-teste-01.shopper.sales s
+    `shopper-teste-01.shopper.sales` s
   JOIN
-    shopper-teste-01.shopper.customer_age ca
+    `shopper-teste-01.shopper.customer_age` ca
   ON
     s.customer_id = ca.customer_id
   ORDER BY

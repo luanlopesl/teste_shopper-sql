@@ -42,7 +42,7 @@ SELECT
       SELECT
         total_customers_qty
       FROM
-        shopper-teste-01.shopper.customer_numbers)) * 100, 2) AS conversion_rate_total_customers
+        `shopper-teste-01.shopper.customer_numbers`)) * 100, 2) AS conversion_rate_total_customers
 FROM
   sales_by_month sbm
 LEFT JOIN
